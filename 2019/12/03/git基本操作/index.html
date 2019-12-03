@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Hexo</title>
+  <title>git基本操作 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;index.html">
+  <meta name="description" content="Git基本指令一 安装与环境设置 环境变量设置目录，点击环境变量，在用户环境变量部分点击新建，输入变量名：Home，输入变量值：D:&#x2F;Git 配置用户名和邮箱 git config --global user.name&amp;quot;用户名&amp;quot;  git config --global user.mail &amp;quot;邮箱地址&amp;quot;  二 创建提交回退1.创建 git init 把这个目">
+<meta name="keywords" content="命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git基本操作">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;03&#x2F;git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Git基本指令一 安装与环境设置 环境变量设置目录，点击环境变量，在用户环境变量部分点击新建，输入变量名：Home，输入变量值：D:&#x2F;Git 配置用户名和邮箱 git config --global user.name&amp;quot;用户名&amp;quot;  git config --global user.mail &amp;quot;邮箱地址&amp;quot;  二 创建提交回退1.创建 git init 把这个目">
 <meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2019-12-03T09:09:06.510Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -141,36 +145,78 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-git基本操作" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/03/git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" class="archive-article-date">
-  	<time datetime="2019-12-03T07:59:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-03</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/03/git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">git基本操作</a>
+    <h1 class="article-title" itemprop="name">
+      git基本操作
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/12/03/git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" class="archive-article-date">
+  	<time datetime="2019-12-03T07:59:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Git基本指令"><a href="#Git基本指令" class="headerlink" title="Git基本指令"></a>Git基本指令</h1><h2 id="一-安装与环境设置"><a href="#一-安装与环境设置" class="headerlink" title="一 安装与环境设置"></a>一 安装与环境设置</h2><ul>
+<li>环境变量设置目录，点击环境变量，在用户环境变量部分点击新建，输入变量名：Home，输入变量值：D:/Git</li>
+<li>配置用户名和邮箱 <code>git config --global user.name&quot;用户名&quot;</code>  <code>git config --global user.mail &quot;邮箱地址&quot;</code></li>
+</ul>
+<h2 id="二-创建提交回退"><a href="#二-创建提交回退" class="headerlink" title="二 创建提交回退"></a>二 创建提交回退</h2><h3 id="1-创建"><a href="#1-创建" class="headerlink" title="1.创建"></a>1.创建</h3><ul>
+<li>git init 把这个目录变成git可以管理的仓库</li>
+<li>git add  git add .</li>
+<li>git commit -m “注释”</li>
+<li>git status</li>
+<li>git diff 文件名<h3 id="2-提交记录-回退"><a href="#2-提交记录-回退" class="headerlink" title="2.提交记录 回退"></a>2.提交记录 回退</h3></li>
+<li>git log </li>
+<li>git log –pretty=oneline </li>
+<li>git reset  –hard HEAD^(回退一个版本)</li>
+<li>git reset –hard HEAD~100(回退到前100个版本的话) </li>
+<li>git reflog (查看版本号)</li>
+<li>git reset  –hard 版本号 </li>
+</ul>
+<h3 id="3-撤销删除"><a href="#3-撤销删除" class="headerlink" title="3.撤销删除"></a>3.撤销删除</h3><ol>
+<li><p><strong>工作区</strong>：就是你在电脑上看到的目录，比如目录下testgit里的文件(.git隐藏目录版本库除外)。或者以后需要再新建的目录文件等等都属于工作区范畴。</p>
+</li>
+<li><p><strong>版本库(Repository)</strong>：工作区有一个隐藏目录.git,这个不属于工作区，这是版本库。其中版本库里面存了很多东西，其中最重要的就是<strong>stage(暂存区)</strong>，还有Git为我们自动创建了第一个分支master,以及指向master的一个指针HEAD。</p>
+</li>
+<li><p>使用Git提交文件到版本库有两步：<br>&emsp; &emsp; &emsp; 第一步：是使用 git add 把文件添加进去，实际上就是把文件添加到暂存区。</p>
+<p>&emsp;  &emsp; &emsp;第二步：使用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支上</p>
+</li>
+<li><p>恢复和撤销</p>
+<ul>
+<li>修改后还没有进入暂存区(还未 git add):<code>git restore 文件名</code>(c撤销修改)</li>
+<li>修改后已进入暂存区(已git add):<code>git reset HEAD</code>(取消add) <code>git restore 文件名</code></li>
+<li><del><code>git reset –hard HEAD</code></del> 注意：恢复到上一次提交（小心使用，不然辛辛苦苦写的全没了）</li>
+<li>删除文件 rm 文件名 </li>
+<li>恢复文件 <code>git restore 文件名</code> </li>
+</ul>
+<h2 id="三-远程仓库"><a href="#三-远程仓库" class="headerlink" title="三 远程仓库"></a>三 远程仓库</h2><ol>
+<li><code>git remote add origin https://github.com/LanceHuang95/TestGit.git</code> &emsp;&emsp;&emsp;<code>git push -u origin master</code></li>
+<li>使用git push命令,把本地库的内容推送到远程。</li>
+</ol>
+</li>
+</ol>
+<p>&emsp;&emsp;实际上是把当前分支master推送到远程。由于远程库是空的我们第一次推送master分支时，加上了–u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。推送成功后，可以立刻在github页面中看到远程库的内容已经和本地一模一样了。</p>
+<ol start="3">
+<li>从现在起，只要本地作了提交，就可以通过如下命令：<code>git push origin master</code><br>把本地master分支的最新修改推送到github上了，现在你就拥有了真正的分布式版本库了。</li>
+</ol>
+<p>4.<code>https://github.com/LanceHuang95/TestGit.git</code></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -182,7 +228,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -195,17 +241,107 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/03/git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
+
   
 
-    
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Git基本指令"><span class="toc-number">1.</span> <span class="toc-text">Git基本指令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-安装与环境设置"><span class="toc-number">1.1.</span> <span class="toc-text">一 安装与环境设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-创建提交回退"><span class="toc-number">1.2.</span> <span class="toc-text">二 创建提交回退</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-创建"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-提交记录-回退"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.提交记录 回退</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-撤销删除"><span class="toc-number">1.2.3.</span> <span class="toc-text">3.撤销删除</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-远程仓库"><span class="toc-number">1.3.</span> <span class="toc-text">三 远程仓库</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
 
 
           </div>
@@ -228,8 +364,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
