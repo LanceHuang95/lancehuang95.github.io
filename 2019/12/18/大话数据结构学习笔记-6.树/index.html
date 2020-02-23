@@ -1,0 +1,1017 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="大话数据结构学习笔记-树, Innocence,github">
+    <meta name="description" content="6 树1.树的基本知识树(Tree)时n(n&amp;gt;=0)个结点的有限集。n=0时称空树；在任意一颗非空树中：(1) 有且仅有一个特定的称为根(Root)的结点(2)当n&amp;gt;1时，其余节点可分为m(m&amp;gt;0)个互不交叉的有限集T1 ">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>大话数据结构学习笔记-树 | Innocence</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Innocence</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>主页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Innocence</div>
+        <div class="logo-desc">
+            
+            一种可怜生，落日和烟雨
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			主页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">大话数据结构学习笔记-树</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="container content">
+
+    
+    <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%A0%91/">
+                                <span class="chip bg-color">树</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                数据结构
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-12-18
+                </div>
+                
+
+                
+
+                
+
+                
+				
+                
+            </div>
+            
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="6-树"><a href="#6-树" class="headerlink" title="6 树"></a>6 树</h2><h3 id="1-树的基本知识"><a href="#1-树的基本知识" class="headerlink" title="1.树的基本知识"></a>1.树的基本知识</h3><p>树(Tree)时n(n&gt;=0)个结点的有限集。n=0时称空树；在任意一颗非空树中：(1) <strong>有且仅有一个</strong>特定的称为根(Root)的结点(2)当n&gt;1时，其余节点可分为m(m&gt;0)个<strong>互不交叉</strong>的有限集T1 T2 ……Tn,每一个集合又是一棵树，并称位根的子树(SubTree)</p>
+<p><strong>结点的度(Degree)</strong>：结点拥有的子树个数，度为0的为叶子结点(Leaf),度不为0的称为分支结点，除根节点外，分支结点也称内部节点。树的度为树内各节点的度的最大值</p>
+<p><strong>结点间的关系</strong>：结点的子树的跟称为该结点的孩子(Child),该结点称为孩子的双亲(Parent),同一个双亲的孩子之间互称兄弟(Sibling);结点的祖先是从根到该结点所有分支上的所有结点，反之，以某结点为根的子树中的任一结点都称为该结点的子孙</p>
+<p><strong>树的深度或高度</strong>：结点的层次从根开始定义，根为第一层，根的孩子为第二层，依次类推。树中结点的最大层次称为树的深度或高度。森林(Forest)是m棵互不交叉的树的集合</p>
+<p><strong>树的抽象数据结构</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">ADT 树(Tree)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">Data</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    树是由一个根结点和若干棵子树构成。树种结点具有相同数据类型及层次关系</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">Operation</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    InitTree(*T):构造空树</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    Destory(*T)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    CreateTree(*T,definition):按definition中给出的树的定义来构造树</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    ClearTree(*T)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    TreeEmpty(T)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    TreeDepth(T)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    Root(T)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    Value(T,cur_e)：cur_e是树中的一个结点，返回此节点的值</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    Assign(T,cur_e,value)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">    Parent(T,cur_e)：返回cur_e结点的双亲</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">    LeftChild(T,cur_e)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">    RightSibling(T,cur_e)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">    InsertChild(*T,*p,i,c)：其中p指向树T的某个结点，i为所指结点的度加上<span class="number">1</span>，非空树c与T不相交，操作结果为插入c树为树T中p指结点的第i棵子树上</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">    Delete(*T,*p,i)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">endADT</span></pre></td></tr></table></figure>
+<h3 id="2-树的存储结构"><a href="#2-树的存储结构" class="headerlink" title="2.树的存储结构"></a>2.树的存储结构</h3><p>由于树中结点间存在双亲与儿子结点，简单的顺序结构无法满足树的实现要求，下面介绍三种表示方法：双亲表示法、孩子表示法、孩子兄弟表示法</p>
+<p><strong>双亲表示法</strong><br>每个结点中带一个指针域指向其唯一的双亲在链表中的位置</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/*树的双亲表示法结点结构定义*/</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 100</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElemType;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">PTreeNode</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="class">&#123;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    ElemType data;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">int</span> parent; <span class="comment">//双亲位置，根结点的parent设置为-1，根结点本身设置为0</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">&#125;PTNode;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> </span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"><span class="class">&#123;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    PTNode nodes[MaxSize]; <span class="comment">//结点数组</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">int</span> r,n;<span class="comment">//根的位置和结点数 </span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">&#125;PTree;</span></pre></td></tr></table></figure>
+<p>如果需要知道结点的孩子结点，可以增加一个长子域，用来存放每个结点最左边的孩子，对于0 1 2个结点解决了找孩子的问题；<br>同理，如果需要知道兄弟间的关系，可以增加右兄弟域来记录每个结点的右兄弟的下标</p>
+<p><strong>孩子表示法</strong><br>我们把每个结点放到一个顺序存储结构的数组中，但每个结点的孩子结点是不确定的，所以我们对每个结点建立一个单链表体现他们的关系。下面详细说明：<br>把<strong>每个结点的孩子结点排列起来，以单链表作为存储结构</strong>，则n个结点有n个孩子链表，如果是叶子结点则此单链表为空。然后<strong>n个头指针又组成一个线性表</strong>，采用顺序存储结构，存放进一个一维数组中(见大话数据结构Page160)</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/*树的孩子表示法结构定义*/</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 100</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ChildTreeNode</span> //孩子结点</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="class">&#123;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">int</span> child; <span class="comment">//孩子结点的数据域，存放某个结点在表头数组中的下标，如1 2 3</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ChildTreeNode</span> * <span class="title">next</span>;</span><span class="comment">//指针域，指向某结点下一个孩子结点的指针</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">&#125;CTNode;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">typdef <span class="class"><span class="keyword">struct</span>  //表头结构</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="class">&#123;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    ElemType data; <span class="comment">//数据域，存放某结点的数据信息 ，如"A" "B"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    CTNode * firstchild; <span class="comment">//头指针域，存放该结点的孩子链表头指针</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">&#125;CTBox;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>  //树结构</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"><span class="class">&#123;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">    CTBox nodes[MaxSize]; <span class="comment">//结点数组</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">int</span> r,n; <span class="comment">//根的位置和结点数</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">&#125;CTree;</span></pre></td></tr></table></figure>
+<p>对于这样的结构，我们查找某个结点的某个孩子或者查找某个结点的兄弟，只需要查找这个结点的孩子单链表即可；遍历整颗树也很方便，对头节点的数组循环即可</p>
+<p>但是如果需要知道某个结点的双亲则比较麻烦，需要遍历整棵树，因此我们可以结合双亲表示法和孩子表示法，在孩子表示法的表头结构CTBox中，加入CTNode * parent,我们称其为双亲孩子表示法</p>
+<p><strong>孩子兄弟表示法</strong><br>我们发现，对于任意一棵树，它的结点的第一个孩子如果存在就是唯一的，它的右兄弟如果存在也是唯一的，因此，我们设置两个指针，分别指向该结点的第一个孩子和此结点的右兄弟，这种表示法最大的好处在于把一颗复杂的树转变成了二叉树(见大话数据结构Page160)</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/*树的孩子兄弟表示结构定义*/</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ChildSiblingTreeNode</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="class">&#123;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    ElemType data;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ChildSiblingNode</span> * <span class="title">firstChild</span>;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ChildSiblingNode</span> * <span class="title">rightSibling</span>;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">&#125;CSTNode;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> </span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="class">&#123;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    CSTNode * header;<span class="comment">//树的头指针</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">&#125;CSTree;</span></pre></td></tr></table></figure>
+<p>这种表示方法给查找某个结点的某个孩子结点带来了方便，只需要通过firstChild找到此结点的长子，在通过长子结点的rightSibling找到它的兄弟，接着一直找下去；但这种表示法的缺陷在于找某个结点的双亲，我们可以再增加一个parent指针来解决这个问题</p>
+<h3 id="3-二叉树"><a href="#3-二叉树" class="headerlink" title="3.二叉树"></a>3.二叉树</h3><p>二叉树(Binary Tree)是n(n&gt;=0)个结点的有限集合，该集合或者为空集(称为空二叉树)，或者由一个根结点和两颗互不相交的、分别称为根结点的左子树和右子树的二叉树组成<br>二叉树的特点：</p>
+<ul>
+<li>每个结点最多只有两颗子树，所以二叉树不存在度大于2的结点</li>
+<li>左子树和右子树是有次序的，不能交换</li>
+<li>即使树中某结点只有一颗子树，也要区分是左子树还是右子树</li>
+</ul>
+<p>二叉树的五种基本形态：</p>
+<ul>
+<li>空二叉树</li>
+<li>只有一个根结点</li>
+<li>根结点只有左子树</li>
+<li>根结点只有右子树</li>
+<li>根结点既有左子树又有右子树</li>
+</ul>
+<p>特殊二叉树：</p>
+<ul>
+<li>斜树：所有结点都只有左子树(或者右子树)的二叉树，线性表结构可以理解为特殊的斜树</li>
+<li>满二叉树：所有分支结点都存在左子树和右子树，并且所有叶子都在同一层上，这样的二叉树称为满二叉树<ul>
+<li>叶子只能出现在最下一层</li>
+<li>非叶子结点的度一定是2</li>
+<li>在同样深度的二叉树中，满二叉树的结点个数最多，叶子树最多</li>
+</ul>
+</li>
+<li>完全二叉树：对于一颗具有n个结点的二叉树按层序编号，如果编号为i(1&lt;=i&lt;=n)的结点与同样深度的满二叉树中编号为i的结点在二叉树中位置完全相同，则这颗二叉树称为完全二叉树(见大话数据结构Page167)<ul>
+<li>叶子结点只出现在最下面两层</li>
+<li>最下层的叶子一定集中在左部连续位置</li>
+<li>倒数第二层若有叶子结点，一定都在右部连续位置</li>
+<li>若结点度为1，则该结点只有左子树</li>
+<li>同样结点数的二叉树，完全二叉树的深度最小</li>
+</ul>
+</li>
+<li><blockquote>
+<p>完全二叉树和满二叉树的区别：满二叉树一定是完全二叉树，但完全二叉树不一定是满二叉树</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="3-1-二叉树的性质"><a href="#3-1-二叉树的性质" class="headerlink" title="3.1 二叉树的性质"></a>3.1 二叉树的性质</h4><ol>
+<li>在二叉树的第i层上最多有2^(i-1)个结点(i&gt;=1)</li>
+<li>深度为k的二叉树最多有(2^k)-1个结点(k&gt;=1)</li>
+<li>对于任意一颗二叉树T,如果其叶子数位n,度为2的结点数为m,则n=m+1;我们设p为度为1的结点数，则有树T的结点总数记为t=n+p+m(见大话数据结构Page170)。<ul>
+<li>考虑树中连接线数,总分支进入数=总分支出去数</li>
+<li>总分支进入数=结点数-1(根结点没有分支进入，其余结点都有一个分支进入)；</li>
+<li>总分支出去数=2*度为2的结点数+度为1的结点数;</li>
+</ul>
+</li>
+<li>具有n个结点的完全二叉树的深度为[ln n/ln2]+1(见大话数据结构Page170)</li>
+<li>如果对于一颗有n个结点的完全二叉树的结点按层序编号(从第一层开始，每层从左到右)，对任一结点i有：<ul>
+<li>如果i=1,则结点i时二叉树的根；如果i&gt;1,则其双亲是结点[i/2]</li>
+<li>如果2i&gt;n,则结点i无左孩子，否则其左孩子是结点2i</li>
+<li>如果2i+1&gt;n,则结点i无左孩子，否则其左孩子是结点2i</li>
+</ul>
+</li>
+</ol>
+<h4 id="3-2-二叉树的存储结构"><a href="#3-2-二叉树的存储结构" class="headerlink" title="3.2 二叉树的存储结构"></a>3.2 二叉树的存储结构</h4><p>二叉树的顺序存储结构：一般的树用顺序存储实现起来比较困难，但是由于二叉树的特殊性，使得顺序结构也能实现。<br>具体来说就是用一维数组来存储二叉树中的结点，顺序(数组下标)按照二叉树的层序编号(按顺序补齐，若对应编号位置若在二叉树中没有结点，则与之对应的数组下标对应的空间为NULL)(见大话数据结构Page173)</p>
+<p>二叉树的链式存储结构：二叉树每个结点最多有两个孩子，所以设计一个数据域和两个指针域(对应孩子兄弟表示法)，我们称这样的链表为二叉链表</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/*二叉树的二叉链表结构定义*/</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">BinaryNode</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="class">&#123;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    ElemType data;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">BinaryNode</span> * <span class="title">lchild</span>,<span class="title">rchild</span>;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">&#125;BNode,*BTree;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"><span class="comment">typedef struct BinaryTree</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="comment">&#123;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"><span class="comment">    BNode * root;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"><span class="comment">    //按需要添加</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"><span class="comment">&#125;BTree;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"><span class="comment">*/</span></span></pre></td></tr></table></figure>
+<h4 id="3-3-二叉树的遍历"><a href="#3-3-二叉树的遍历" class="headerlink" title="3.3 二叉树的遍历"></a>3.3 二叉树的遍历</h4><p>二叉树的遍历(Traversing Binary Tree)是指从根结点出发按照某种次序依次访问二叉树中所有结点，使得每个结点被访问一次且竟仅被访问一</p>
+<p><strong>前序遍历</strong><br>若二叉树为空，则返回；否则先访问根结点，然后前序遍历左子树，再前序遍历右子树</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/*二叉树的前序遍历递归算法*/</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PreOrderTravese</span><span class="params">(BTree T)</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="function"></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span>(T ==<span class="literal">NULL</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    <span class="built_in">printf</span>(<span class="string">"%c"</span>,T-&gt;data);<span class="comment">//显示结点数据，可以改为其他对结点操作</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    PreOrderTravese(T-&gt;lchild);<span class="comment">//再先序遍历左子树</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    PreOrderTravese(T-&gt;rchild);<span class="comment">//最后先序遍历右子树</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<p><strong>中序遍历</strong><br>若二叉树为空，则返回；否则从根结点开始(注意并不是先访问根结点)中序遍历根结点的左子树然后是访问根结点，最后中序遍历右子树</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/*二叉树的中遍历递归算法*/</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrderTravese</span><span class="params">(BTree T)</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="function"></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span>(T ==<span class="literal">NULL</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    InOrderTravese(T-&gt;lchild);<span class="comment">//中序遍历左子树</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    <span class="built_in">printf</span>(<span class="string">"%c"</span>,T-&gt;data);/显示结点数据，可以改为其他对结点操作</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    InOrderTravese(T-&gt;rchild);<span class="comment">//最后中序遍历右子树</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<p><strong>后序遍历</strong><br>若二叉树为空，则返回；否则从左到右先叶子后结点的方式遍历访问左右子树，最后访问根结点</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/*二叉树的后序遍历递归算法*/</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PostOrderTravese</span><span class="params">(BTree T)</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="function"></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span>(T ==<span class="literal">NULL</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    PostOrderTravese(T-&gt;lchild);<span class="comment">//先后序遍历左子树</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    PostOrderTravese(T-&gt;rchild);<span class="comment">//再后序遍历右子树</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    <span class="built_in">printf</span>(<span class="string">"%c"</span>,T-&gt;data);<span class="comment">//最后显示结点数据，可以改为其他对结点操作</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<p><strong>层序遍历</strong><br>若二叉树为空，则返回；否则从树的第一层，也就是根结点开始访问，从上而下逐层遍历，在同一层中，按从左到右的顺序对结点逐个访问</p>
+<p><strong>总结</strong>：</p>
+<ul>
+<li>上述遍历算法其实都是把树中的结点变成某种意义的线性序列</li>
+<li>已知前序和中序的遍历队列，可以唯一确定一颗二叉树</li>
+<li>已知后序和中序的遍历队列，可以唯一确定一颗二叉树</li>
+<li>已知前序和后序的遍历队列，不能唯一确定一颗二叉树，无法区分左右子树(见大话数据结构Page186)</li>
+</ul>
+<h4 id="3-4-二叉树的建立"><a href="#3-4-二叉树的建立" class="headerlink" title="3.4 二叉树的建立"></a>3.4 二叉树的建立</h4><p>假设要在内存中建立一棵树，但为了能让每个结点确认是否有左右孩子，我们对二叉树中的每个结点的空指针引出一个虚结点，其值设为’#’，我们称这种处理后的二叉树为原二叉树的扩展二叉树<br>(见大话数据结构Page186)</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/*按前序输入二叉树中结点的值(假设为一个字符)*/</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/*#表示空树，构造二叉链表表示二叉树T*/</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateBTree</span><span class="params">(BTree * T)</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="function"></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    ElemType ch;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%c"</span>,&amp;ch);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span>(ch == <span class="string">'#'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">        *T=<span class="literal">NULL</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">else</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">        *T =(BTree)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BNode));</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">if</span>(! *T)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">            <span class="built_in">exit</span>(OVERFLOW);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">        (*T)-&gt;data=ch;<span class="comment">//生成根结点</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">        CreateBTree(&amp;(*T)-&gt;lchild);<span class="comment">//构造左子树</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">        CreateBTree(&amp;(*T)-&gt;lchild);<span class="comment">//构造右子树</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">``` </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">### <span class="number">4.</span>线索二叉树</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">对于一个有n个结点的二叉链表，每个结点有左右<span class="number">2</span>个指针域，一共是<span class="number">2</span>n个指针域，而n个结点的二叉树一共有n<span class="number">-1</span>分支线数，也就是说存在n+<span class="number">1</span>个空指针域，浪费了内存资源(见大话数据结构Page188)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">所以考虑将二叉树的所有空指针域中的lchild改为指向当前结点的前驱(按某种遍历方式确定的序列里)；空指针域中的rchild改为指向当前结点的后继，我们**把这种指向前驱和后继的指针称为线索**，加上线索的二叉链表称为线索链表，**相应的二叉树称为线索二叉树**(Thread Binary Tree)(见大话数据结构Page190 图 <span class="number">6</span><span class="number">-10</span><span class="number">-3</span>和<span class="number">6</span><span class="number">-10</span><span class="number">-4</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">虽然线索二叉树等于是把一颗二叉树转变成了一个双向链表，对插入删除查找结点都带来了方便；不过问题并没有解决，我们还需要区分某结点的指针域里lchild是指向它的左孩子还是指向前驱，rchild同理；依次我们再每个结点再增设两个布尔类型的标志域ltag和rtag(占用空间小)(见大话数据结构Page191)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">**线索二叉树的结构实现**</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">``` cpp</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/*二叉树的二叉线索存储结构定义*/</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">BinaryThreadedNode</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line"><span class="class">&#123;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">    ElemType data;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">BinaryThreadedNode</span> * <span class="title">lchild</span>,<span class="title">rchild</span>;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">bool</span> LTag,RTag; <span class="comment">//值为1时表示指向前驱或后继，值为0表示指向左右孩子指针</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">&#125;BThrNode,*BThrTree;</span></pre></td></tr></table></figure>
+<p>线索化的实质就是将二叉链表中的空指针改为前驱或后继的线索。由于前驱和后继的信息只有在遍历二叉树时才能得到，所以<strong>线索化的过程就是在遍历的过程中修改空指针的过程</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/*中序遍历进行中序线索化*/</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">BThrTree pre; <span class="comment">//全局变量，始终指向刚刚访问过的结点</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InThreading</span><span class="params">(BThrTree p)</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="function"></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span>(p)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        InThreading(BThrTree p-&gt;lchild);<span class="comment">//递归左子树线索化</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">if</span>(!p-&gt;lchild)<span class="comment">//没有左孩子</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">        &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">            p-&gt;Ltag=<span class="number">1</span>;<span class="comment">//前驱线索</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">            p-&gt;lchild=pre;<span class="comment">//左孩子指针指向前驱</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">        <span class="comment">//此时p结点的后继还没有访问到，因此只能对它的前驱结点pre的右指针rchild做判断</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">if</span>(!pre-&gt;rchild)<span class="comment">//前驱没有右孩子</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">        &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">            pre-&gt;RTag=<span class="number">1</span>;<span class="comment">//后继线索</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">            pre-&gt;rchild =p;<span class="comment">//前驱右孩子指针指向后继(当前结点p)</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">        pre=p;<span class="comment">//保持pre指向p的前驱</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">        InThreading(BThrTree p-&gt;rchild);<span class="comment">//递归左子树线索化</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<p>有了线索二叉树以后，我们对其遍历时发现，其实等于操作一个双向链表。因此，我们在二叉树线索链添加一个头结点(见大话数据结构Page193 图 6-10-6),这样的好处是既可以从第一个结点起顺后继续进行遍序，也可以从最后一个结点起顺前驱续进行遍序，遍历的代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/*T指向头结点，头结点lchild指向根结点，rchild指向中序遍历的最后一个结点*/</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/*二叉树的中序序列里第一个结点的lchild和最后一个结点的rchild都指向头结点*/</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/*中序遍历二叉线索链表表示的二叉树T*/</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/*时间复杂度O(n)*/</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">InOrderTraverse_Thr</span><span class="params">(BThrTree T)</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="function"></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    BThrTree p;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    p=T-&gt;lchild;<span class="comment">//p指向根结点</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">while</span>(p != T) <span class="comment">//空树或者遍历结束时，p ==T</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">while</span>(p-&gt;LTag == <span class="number">0</span>) <span class="comment">//当LTag==0时循环到中序序列的第一个结点(最左边最下层)</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">            p=p-&gt;lchild;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c"</span>,p-&gt;data); <span class="comment">//显示结点数据，可以更改为其他对结点的操作</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">while</span>(p-&gt;RTag ==<span class="number">1</span> &amp;&amp; p-&gt;rchild != T)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">        &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">            p=p-&gt;child;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">            <span class="built_in">printf</span>(<span class="string">"%c"</span>,p-&gt;data);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">        p=p-&gt;child; <span class="comment">//p进至其右子树根</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<p>总结：</p>
+<ul>
+<li>在实际运用中，需要先对二叉树按照特定的顺序进行线索化生成二叉树线索链表，才能对其进行遍历</li>
+<li>由于充分利用了空指针域的空间，又保证了创建时的一次线索化就可以生成能一直使用的前驱后继信息，所以如果二叉树需要经常遍历或者查找结点时需要某种遍历序列中的前驱和后继，那么则适合采用线索二叉链表的存储结构</li>
+</ul>
+<h3 id="5-树、森林与二叉树的转换"><a href="#5-树、森林与二叉树的转换" class="headerlink" title="5.树、森林与二叉树的转换"></a>5.树、森林与二叉树的转换</h3><p>从前面知道，树的孩子兄弟表示法可以将一棵树用二叉链表进行存储，所以借助二叉链表，树和二叉树可以相互转换<br><strong>树转换为二叉树</strong></p>
+<ul>
+<li>加线。在所有兄弟结点之间加一条连线。</li>
+<li>去线。对树中每个结点，只保留它与第一个孩子结点的连线，删除它与其他孩子结点之间的连线。</li>
+<li>层次调整。以根结点为轴心，将整棵树顺时针旋转一定的角度，使之结构层次分明。注意第一个孩子是二叉树的结点的左孩子，那么它的兄弟转换过来是它的右孩子(见大话数据结构Page196 图6-11-2)</li>
+</ul>
+<p><strong>森林转换为二叉树</strong></p>
+<ul>
+<li>把森林中的每棵树转换为二叉树</li>
+<li>第一颗二叉树不动，从第二颗二叉树开始，依次把后一颗二叉树的根结点作为前一棵二叉树的根结点的右孩子，用线连接起来</li>
+</ul>
+<p><strong>二叉树转换为树</strong><br>二叉树转换为树是树转换为二叉树的反过程</p>
+<ul>
+<li>加线。左孩子的n个右孩子结点(左孩子的右孩子的右孩子…类推)都作为此结点的孩子，将该结点与这些右孩子结点用线连接起来</li>
+<li>去线。删除原二叉树中所有结点与其右孩子结点的连线</li>
+<li>层次调整</li>
+</ul>
+<p><strong>二叉树转换为森林</strong><br>判断一颗二叉树能否转换成森林的标准是二叉树的根结点有右孩子。如果没有右孩子，则转换成一棵树</p>
+<ul>
+<li>从根结点开始，若右孩子存在，则把与右孩子的连线删除，再查看分离后的二叉树，重复上过程，知道所有右孩子连线都上述为止，得到分离的二叉树</li>
+<li>再将每颗分离后的二叉树转换为树即可</li>
+</ul>
+<p><strong>树与森林的遍历</strong></p>
+<ul>
+<li>树的遍历：<ul>
+<li>先根遍历，即先访问树的根结点，然后依次先根遍历根的每颗子树</li>
+<li>后根遍历，先依次后根遍历每颗子树，然后再访问树的根结点</li>
+</ul>
+</li>
+<li>森林的遍历<ul>
+<li>前序遍历：先访问森林中第一棵树的根结点，然后依次先根遍历根的每颗子树，再依次用同样方式遍历其余树构成的森林</li>
+<li>后序遍历：先访问森林中的第一棵树，后根遍历的方式遍历每颗子树，然后再访问根结点，再依次用同样方式遍历其余树构成的森林</li>
+</ul>
+</li>
+</ul>
+<p>总结：森林的前序遍历和二叉树的前序遍历结果相同，森林的后序遍历和二叉树的中序遍历结果相同；因此当以二叉链表作树的存储结构时，树的先根遍历和后根遍历可以借用二叉树的前序遍历和中序遍历算法来实现</p>
+<h3 id="6-赫夫曼树"><a href="#6-赫夫曼树" class="headerlink" title="6.赫夫曼树"></a>6.赫夫曼树</h3><p>路径长度：从树中一个结点到另一个结点之间的分支构成两个结点之间的路径，路径上的分支数目称为路径长度</p>
+<p>树的路径长度：从树根到每一个结点的路径长度之和</p>
+<p>考虑到带权重的结点，假设有n个权值{w1,w2,…,wn}构造一颗有n个叶子结点的二叉树，每个叶子的路径长度为l(k),权值为w(k)，则树的带权路径长度WPL最小的二叉树称为赫夫曼树，WPL=min(w(k)*l(k)求和)</p>
+<p><strong>赫夫曼树的构造</strong></p>
+<ol>
+<li>先把有权值的叶子结点按照权值从小到大的顺序排列起来，如 A5,E10,B15,D30,C40</li>
+<li>取前两个权值最小的结点作为一个新节点N1的两个子结点，两个里较小的为左孩子，新节点权值为两子结点权值之和，如A为N1左孩子，E为N1右孩子，N1权值15</li>
+<li>将N1替换A和E,按权值从小到大插入有序序列，即N1 15,B15,D30,C40</li>
+<li>重复上诉步骤，直到队列中无结点(最后生成的新结点即为根结点)</li>
+</ol>
+<p><strong>赫夫曼编码</strong><br>一般地，设需要编码的字符集为{d1,d2,…,dn},各个字符在电文中出现的次数或频率集合为{w1,w2,…,wn},以d1,d2,…,dn作为叶子结点，以w1,w2,…,wn作为叶子结点的权值来构造一颗赫夫曼树。规赫夫曼树的左分支为0，右分支为1，则从根结点到叶子结点所经过的路径分支组成的0和1的序列便为该结点所对应字符的编码，这就是赫夫曼编码</p>
+<p>编码中非0即1，长短不等的话容易混淆，所以要设计长短不等的编码，则必须是<strong>任一字符的编码都不是另一个字符的编码的前缀，这种编码称为前缀编码</strong></p>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://lancehuang95.github.io" rel="external nofollow noreferrer">歧路</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://lancehuang95.github.io/2019/12/18/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-6.%E6%A0%91/">http://lancehuang95.github.io/2019/12/18/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-6.%E6%A0%91/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="http://lancehuang95.github.io" target="_blank">歧路</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%A0%91/">
+                                    <span class="chip bg-color">树</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/12/20/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-7.%E5%9B%BE/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="大话数据结构学习笔记-图">
+                        
+                        <span class="card-title">大话数据结构学习笔记-图</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            7 图1.图的基本知识图(Graph)是由顶点的有穷非空集合和顶点之间边的集合组成，通常表示为：G(V,E),其中，G表示一个图，V(Vertex)是图G中顶点的集合，E是图G中边的集合
+
+线性表中的数据元素称为元素，树中的数据元素称为结点
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-12-20
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                    数据结构
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%9B%BE/">
+                        <span class="chip bg-color">图</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/12/15/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-5.%E4%B8%B2/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="大话数据结构学习笔记-串">
+                        
+                        <span class="card-title">大话数据结构学习笔记-串</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            5 串串（string)又名字符串，零个或多个字符组成的有限序列。空串 空格串 子串 
+串的比较：通过组成串的字符之间的编码来比较，字符的编码是指字符在对应字符集中的序号，串a和串b大小比较如下:
+
+串的位数直接比较
+位数相同，按串第一位字
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                    数据结构
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E4%B8%B2/">
+                        <span class="chip bg-color">串</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+    
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="http://lancehuang95.github.io" target="_blank">歧路</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/lancehuang95" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1140944047@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1140944047" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1140944047" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
